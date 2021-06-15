@@ -31,6 +31,9 @@ RUN curl -SL 'https://github.com/phpredis/phpredis/archive/5.3.2.tar.gz' -o phpr
         libjpeg62-turbo-dev \
         libpng-dev \
     && docker-php-ext-configure gd \
+        --with-freetype-dir=/usr/include/freetype2 \
+        --with-png-dir=/usr/include \
+        --with-jpeg-dir=/usr/include \
     && docker-php-ext-install -j$(nproc) gd \
     \
     && apt-get install -y libzip-dev \
@@ -39,4 +42,3 @@ RUN curl -SL 'https://github.com/phpredis/phpredis/archive/5.3.2.tar.gz' -o phpr
     && docker-php-ext-install -j $(nproc) pdo_mysql opcache \
     \
     && rm -rf /var/lib/apt/
-
