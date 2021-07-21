@@ -30,7 +30,7 @@ RUN curl -s https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key 
 
 # Install curl and helm
 RUN apt-get update \
-    && apt-get install -y curl jq git \
+    && apt-get install -y curl jq git python2 \
     && curl -SL "https://get.helm.sh/helm-${HELM_VER}-linux-amd64.tar.gz" | tar zx --strip=1 -C /usr/local/bin/ \
     && rm -rf /var/lib/apt/
 
